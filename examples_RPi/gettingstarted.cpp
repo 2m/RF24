@@ -52,7 +52,7 @@ bool radioNumber = 1;
 /********************************/
 
 // Radio pipe addresses for the 2 nodes to communicate.
-const uint8_t pipes[][6] = {"1Node","2Node"};
+const uint8_t pipes[][6] = {"test2","test1"};
 
 
 int main(int argc, char** argv){
@@ -70,7 +70,7 @@ int main(int argc, char** argv){
   // Dump the configuration of the rf unit for debugging
   radio.printDetails();
 
-
+  radio.setChannel(80);
 /********* Role chooser ***********/
 
   printf("\n ************ Role Setup ***********\n");
@@ -126,7 +126,7 @@ int main(int argc, char** argv){
 			unsigned long started_waiting_at = millis();
 			bool timeout = false;
 			while ( ! radio.available() && ! timeout ) {
-				if (millis() - started_waiting_at > 200 )
+				if (millis() - started_waiting_at > 2000 )
 					timeout = true;
 			}
 

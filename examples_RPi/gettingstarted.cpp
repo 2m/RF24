@@ -23,6 +23,7 @@ TMRh20 2014 - Updated to work with optimized RF24 Arduino library
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <unistd.h>
 #include <RF24/RF24.h>
 
 using namespace std;
@@ -90,7 +91,7 @@ int main(int argc, char** argv){
   // This simple sketch opens two pipes for these two nodes to communicate
   // back and forth.
 
-    if ( !radioNumber )    {
+    if ( role )    {
       radio.openWritingPipe(pipes[0]);
       radio.openReadingPipe(1,pipes[1]);
     } else {

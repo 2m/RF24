@@ -36,6 +36,8 @@ all: librf24-bcm
 # Make the library
 librf24-bcm: RF24.o bcm2835.o 
 	g++ -shared -Wl,-soname,$@.so.1 ${CCFLAGS} -o ${LIBNAME} $^
+	ln -s ${LIBNAME} ${LIB}.so.1
+	ln -s ${LIBNAME} ${LIB}.a
 	
 # Library parts
 RF24.o: RF24.cpp
